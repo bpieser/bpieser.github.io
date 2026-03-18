@@ -7,7 +7,6 @@
   <meta name="description" content="Portfolio of Björn Pieser – Windows desktop application developer with expertise in .NET, C#, WPF and DevOps." />
   <title>Portfolio | Björn Pieser</title>
 
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
   <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.min.js"></script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -22,47 +21,47 @@
 
 </head>
 
-<body class="bg-gray-100">
+<body class="bg-light">
   <!-- Vue App -->
-  <div id="app" class="font-sans antialiased">
+  <div id="app">
     <!-- Navbar -->
-    <nav class="bg-white bg-opacity-90 fixed w-full shadow-lg z-50 top-0">
-      <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+    <nav class="navbar-custom fixed-top shadow">
+      <div class="container d-flex justify-content-between align-items-center py-2">
         <!-- Logo / Brand Name -->
-        <div class="text-3xl font-bold text-blue-600">
-          <a href="#" aria-label="Back to top">
+        <div class="fs-3 fw-bold text-primary">
+          <a href="#" aria-label="Back to top" class="text-decoration-none text-primary">
             <span id="LogoHeader">Portfolio</span>
           </a>
         </div>
 
         <!-- Desktop Navbar Links -->
-        <div class="hidden md:flex space-x-6">
-          <a href="#about" class="text-gray-700 hover:text-blue-600 font-medium">About</a>
-          <a href="#projects" class="text-gray-700 hover:text-blue-600 font-medium">Showcase</a>
-          <a href="#skills" class="text-gray-700 hover:text-blue-600 font-medium">Skills</a>
+        <div class="d-none d-md-flex gap-4">
+          <a href="#about" class="nav-link-custom fw-medium">About</a>
+          <a href="#projects" class="nav-link-custom fw-medium">Showcase</a>
+          <a href="#skills" class="nav-link-custom fw-medium">Skills</a>
         </div>
 
         <!-- Hamburger Icon for Mobile -->
-        <button class="md:hidden focus:outline-none" @click="toggleMenu" aria-label="Toggle navigation menu">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-700" fill="none" viewBox="0 0 24 24"
-            stroke="currentColor">
+        <button class="d-md-none btn-hamburger" @click="toggleMenu" aria-label="Toggle navigation menu">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+            stroke="currentColor" style="width: 1.5rem; height: 1.5rem;">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
           </svg>
         </button>
       </div>
 
       <!-- Mobile Navbar Links -->
-      <div v-if="isMenuOpen" class="md:hidden transition-height duration-300 bg-white shadow-lg">
-        <a href="#about" class="block text-gray-700 px-6 py-2 hover:bg-blue-100">About</a>
-        <a href="#projects" class="block text-gray-700 px-6 py-2 hover:bg-blue-100">Showcase</a>
-        <a href="#skills" class="block text-gray-700 px-6 py-2 hover:bg-blue-100">Skills</a>
+      <div v-if="isMenuOpen" class="d-md-none bg-white shadow mobile-menu">
+        <a href="#about" class="d-block text-dark text-decoration-none px-4 py-2 mobile-nav-link">About</a>
+        <a href="#projects" class="d-block text-dark text-decoration-none px-4 py-2 mobile-nav-link">Showcase</a>
+        <a href="#skills" class="d-block text-dark text-decoration-none px-4 py-2 mobile-nav-link">Skills</a>
       </div>
     </nav>
 
     <!-- Hero Section (Header) -->
-    <header class="bg-blue-600 text-white py-10 text-center mt-14">
-      <div class="container mx-auto mt-14">
-        <h1 class="text-4xl font-bold">Development | Design | DevOps</h1>
+    <header class="bg-primary text-white text-center hero-section">
+      <div class="container py-5">
+        <h2 class="display-6 fw-bold">Development | Design | DevOps</h2>
       </div>
     </header>
     <div class="custom-shape-divider-top">
@@ -74,103 +73,105 @@
     </div>
 
     <!-- About Section -->
-    <section id="about" class="py-16 bg-gray-100">
-      <div class="container mx-auto text-center">
-        <h2 class="text-4xl font-semibold text-blue-600 mb-6">
+    <section id="about" class="section-padding bg-light">
+      <div class="container text-center">
+        <h2 class="display-7 fw-semibold text-primary mb-4">
           {{ portfolioData.about.title }}
         </h2>
-        <p class="text-gray-600 text-lg max-w-2xl mx-auto">
+        <p class="text-muted fs-5 mx-auto about-text">
           {{ portfolioData.about.description }}
         </p>
       </div>
     </section>
 
     <!-- Projects Section -->
-    <section id="projects" class="py-16 bg-white">
-      <div class="container mx-auto">
-        <h2 class="text-4xl font-semibold text-blue-600 text-center mb-12">
+    <section id="projects" class="section-padding bg-white">
+      <div class="container">
+        <h2 class="display-7 fw-semibold text-primary text-center mb-5">
           Showcase
         </h2>
-        <div class="grid md:grid-cols-1 lg:grid-cols-2 gap-8">
+        <div class="row g-4">
           <div v-for="(project, index) in portfolioData.projects" :key="index"
-            class="bg-gray-100 rounded-md p-4 shadow hover:shadow-lg transition">
+            class="col-lg-6">
+            <div class="bg-light rounded p-3 shadow-sm card-hover">
 
+              <div :id="'carouselExampleIndicators' + index" class="carousel slide mb-4">
+                <div class="carousel-indicators">
+                  <div v-for="(image, indexk) in project.images" :key="indexk">
+                    <button type="button" :data-bs-target="'#carouselExampleIndicators' + index"
+                      :data-bs-slide-to="indexk" :class="{ 'active': indexk === 0 }" aria-current="true"
+                      :aria-label="'Slide' + indexk"></button>
+                  </div>
+                </div>
+                <div class="carousel-inner">
+                  <div v-for="(image, indexj) in project.images" :key="indexj" class="carousel-item"
+                    :class="{ 'active': indexj === 0 }">
+                    <img :src="image.src" class="d-block w-100" :alt="project.title + ' – screenshot ' + (indexj + 1)">
+                  </div>
+                </div>
+                <button class="carousel-control-prev" type="button" :data-bs-target="'#carouselExampleIndicators' + index"
+                  data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" :data-bs-target="'#carouselExampleIndicators' + index"
+                  data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
+              </div>
 
-            <div :id="'carouselExampleIndicators' + index" class="carousel slide mb-4">
-              <div class="carousel-indicators">
-                <div v-for="(image, indexk) in project.images" :key="indexk">
-                  <button type="button" :data-bs-target="'#carouselExampleIndicators' + index"
-                    :data-bs-slide-to="indexk" :class="{ 'active': indexk === 0 }" aria-current="true"
-                    :aria-label="'Slide' + indexk"></button>
-                </div>
-              </div>
-              <div class="carousel-inner">
-                <div v-for="(image, indexj) in project.images" :key="indexj" class="carousel-item"
-                  :class="{ 'active': indexj === 0 }">
-                  <img :src="image.src" class="d-block w-100" :alt="project.title + ' – screenshot ' + (indexj + 1)">
-                </div>
-              </div>
-              <button class="carousel-control-prev" type="button" :data-bs-target="'#carouselExampleIndicators' + index"
-                data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-              </button>
-              <button class="carousel-control-next" type="button" :data-bs-target="'#carouselExampleIndicators' + index"
-                data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-              </button>
+              <h3 class="fs-5 fw-semibold text-dark">
+                {{ project.title }}
+              </h3>
+
+              <p class="text-muted small mt-1">{{ project.description }}</p>
+              <a :href="project.link" class="text-primary fw-medium link-hover" target="_blank"
+                rel="noopener noreferrer">
+                <span class="d-flex align-items-center">
+                  <span>Watch on YouTube</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                    class="bi bi-youtube ms-2" viewBox="0 0 16 16">
+                    <path
+                      d="M8.051 1.999h.089c.822.003 4.987.033 6.11.335a2.01 2.01 0 0 1 1.415 1.42c.101.38.172.883.22 1.402l.01.104.022.26.008.104c.065.914.073 1.77.074 1.957v.075c-.001.194-.01 1.108-.082 2.06l-.008.105-.009.104c-.05.572-.124 1.14-.235 1.558a2.01 2.01 0 0 1-1.415 1.42c-1.16.312-5.569.334-6.18.335h-.142c-.309 0-1.587-.006-2.927-.052l-.17-.006-.087-.004-.171-.007-.171-.007c-1.11-.049-2.167-.128-2.654-.26a2.01 2.01 0 0 1-1.415-1.419c-.111-.417-.185-.986-.235-1.558L.09 9.82l-.008-.104A31 31 0 0 1 0 7.68v-.123c.002-.215.01-.958.064-1.778l.007-.103.003-.052.008-.104.022-.26.01-.104c.048-.519.119-1.023.22-1.402a2.01 2.01 0 0 1 1.415-1.42c.487-.13 1.544-.21 2.654-.26l.17-.007.172-.006.086-.003.171-.007A100 100 0 0 1 7.858 2zM6.4 5.209v4.818l4.157-2.408z" />
+                  </svg>
+                </span>
+              </a>
             </div>
-
-            <h3 h3 class="text-xl font-semibold text-gray-700">
-              {{ project.title }}
-            </h3>
-
-            <p class="text-gray-500 text-sm mt-1">{{ project.description }}</p>
-            <a :href="project.link" class="text-blue-600 font-medium hover:underline" target="_blank"
-              rel="noopener noreferrer">
-              <span class="flex">
-                <span>Watch on YouTube</span>
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
-                  class="bi bi-youtube mx-2" viewBox="0 0 16 16">
-                  <path
-                    d="M8.051 1.999h.089c.822.003 4.987.033 6.11.335a2.01 2.01 0 0 1 1.415 1.42c.101.38.172.883.22 1.402l.01.104.022.26.008.104c.065.914.073 1.77.074 1.957v.075c-.001.194-.01 1.108-.082 2.06l-.008.105-.009.104c-.05.572-.124 1.14-.235 1.558a2.01 2.01 0 0 1-1.415 1.42c-1.16.312-5.569.334-6.18.335h-.142c-.309 0-1.587-.006-2.927-.052l-.17-.006-.087-.004-.171-.007-.171-.007c-1.11-.049-2.167-.128-2.654-.26a2.01 2.01 0 0 1-1.415-1.419c-.111-.417-.185-.986-.235-1.558L.09 9.82l-.008-.104A31 31 0 0 1 0 7.68v-.123c.002-.215.01-.958.064-1.778l.007-.103.003-.052.008-.104.022-.26.01-.104c.048-.519.119-1.023.22-1.402a2.01 2.01 0 0 1 1.415-1.42c.487-.13 1.544-.21 2.654-.26l.17-.007.172-.006.086-.003.171-.007A100 100 0 0 1 7.858 2zM6.4 5.209v4.818l4.157-2.408z" />
-                </svg>
-              </span>
-            </a>
           </div>
         </div>
       </div>
     </section>
 
     <!-- Skills Section -->
-    <section id="skills" class="py-16 bg-gray-50">
-      <div class="container mx-auto text-center">
-        <h2 class="text-4xl font-semibold text-blue-600 mb-10">Skills</h2>
-        <div class="grid md:grid-cols-1 lg:grid-cols-3 gap-10">
-          <div v-for="(category, categoryKey) in portfolioData.skills" :key="categoryKey">
+    <section id="skills" class="section-padding bg-light">
+      <div class="container text-center">
+        <h2 class="display-7 fw-semibold text-primary mb-5">Skills</h2>
+        <div class="row g-4">
+          <div v-for="(category, categoryKey) in portfolioData.skills" :key="categoryKey"
+            class="col-lg-4">
             <!-- Category Header -->
-            <div class="mb-6">
+            <div class="mb-4">
               <div class="mb-2">
-                <i :class="portfolioData.categoryMeta[categoryKey].icon" class="text-blue-600" style="font-size: 2rem;"></i>
+                <i :class="portfolioData.categoryMeta[categoryKey].icon" class="text-primary" style="font-size: 2rem;"></i>
               </div>
-              <h3 class="text-xl font-semibold text-gray-700">
+              <h3 class="fs-5 fw-semibold text-dark">
                 {{ portfolioData.categoryMeta[categoryKey].label }}
               </h3>
-              <p class="text-gray-500 text-sm mt-1">{{ portfolioData.categoryMeta[categoryKey].description }}</p>
+              <p class="text-muted small mt-1">{{ portfolioData.categoryMeta[categoryKey].description }}</p>
             </div>
 
-            <ul class="space-y-3">
+            <ul class="list-unstyled skill-list">
               <li v-for="(skill, skillIndex) in category" :key="skillIndex"
-                class="bg-white px-4 py-3 rounded-md shadow hover:shadow-md transition text-left">
-                <div class="flex items-center justify-between">
-                  <span class="text-gray-700 font-semibold text-sm">{{ skill.name }}</span>
-                  <div class="flex space-x-1">
+                class="bg-white px-3 py-2 rounded shadow-sm card-hover text-start">
+                <div class="d-flex align-items-center justify-content-between">
+                  <span class="text-dark fw-semibold small">{{ skill.name }}</span>
+                  <div class="d-flex gap-1">
                     <span v-for="dotIndex in 5" :key="dotIndex"
-                      :class="dotIndex <= skill.rating ? 'text-blue-500' : 'text-gray-300'" class="text-base">●</span>
+                      :class="dotIndex <= skill.rating ? 'dot-filled' : 'dot-empty'">●</span>
                   </div>
                 </div>
-                <p class="text-gray-500 text-xs mt-1">{{ skill.description }}</p>
+                <p class="text-muted text-xs mt-1 mb-0">{{ skill.description }}</p>
               </li>
             </ul>
           </div>
@@ -179,11 +180,11 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-blue-600 text-white py-8">
-      <div class="container mx-auto text-center">
+    <footer class="bg-primary text-white py-4">
+      <div class="container text-center">
         <p id="FooterHeader">
           {{ currentYear }} - Made with
-          <span class="p-2 text-2xl text-red-500">&hearts;</span>
+          <span class="px-1 fs-4 text-danger">&hearts;</span>
         </p>
       </div>
     </footer>
