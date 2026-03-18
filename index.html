@@ -4,21 +4,18 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Portfolio of Björn Pieser – Windows desktop application developer with expertise in .NET, C#, WPF and DevOps." />
   <title>Portfolio | Björn Pieser</title>
 
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
   <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.min.js"></script>
 
-  <link href="https://fonts.googleapis.com/css?family=Yellowtail&display=swap" rel="stylesheet" />
-
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Yellowtail&display=swap" rel="stylesheet">
 
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-
-  <script src="https://unpkg.com/@material-tailwind/html@latest/scripts/script-name.js"></script>
   
   <style>
     p {
@@ -43,21 +40,6 @@
     #FooterHeader {
       font-family: "Yellowtail", cursive;
       font-size: x-large;
-    }
-
-    .circle {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      display: inline-block;
-    }
-
-    .filled-circle {
-      background-color: #3b82f6;
-    }
-
-    .empty-circle {
-      background-color: #d1d5db;
     }
 
     /* Transition for mobile menu */
@@ -106,8 +88,8 @@
       <div class="container mx-auto px-6 py-3 flex justify-between items-center">
         <!-- Logo / Brand Name -->
         <div class="text-3xl font-bold text-blue-600">
-          <a href="#">
-            <h1 id="LogoHeader">Portfolio</h1>
+          <a href="#" aria-label="Back to top">
+            <span id="LogoHeader">Portfolio</span>
           </a>
         </div>
 
@@ -119,7 +101,7 @@
         </div>
 
         <!-- Hamburger Icon for Mobile -->
-        <button class="md:hidden focus:outline-none" @click="toggleMenu">
+        <button class="md:hidden focus:outline-none" @click="toggleMenu" aria-label="Toggle navigation menu">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-700" fill="none" viewBox="0 0 24 24"
             stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
@@ -130,8 +112,8 @@
       <!-- Mobile Navbar Links -->
       <div v-if="isMenuOpen" class="md:hidden transition-height duration-300 bg-white shadow-lg">
         <a href="#about" class="block text-gray-700 px-6 py-2 hover:bg-blue-100">About</a>
-        <a href="#projects" class="block text-gray-700 px-6 py-2 hover:bg-blue-100">Showcase</ao>
-          <a href="#skills" class="block text-gray-700 px-6 py-2 hover:bg-blue-100">Skills</a>
+        <a href="#projects" class="block text-gray-700 px-6 py-2 hover:bg-blue-100">Showcase</a>
+        <a href="#skills" class="block text-gray-700 px-6 py-2 hover:bg-blue-100">Skills</a>
       </div>
     </nav>
 
@@ -183,7 +165,7 @@
               <div class="carousel-inner">
                 <div v-for="(image, indexj) in project.images" :key="indexj" class="carousel-item"
                   :class="{ 'active': indexj === 0 }">
-                  <img :src="image.src" class="d-block w-100" alt="...">
+                  <img :src="image.src" class="d-block w-100" :alt="project.title + ' – screenshot ' + (indexj + 1)">
                 </div>
               </div>
               <button class="carousel-control-prev" type="button" :data-bs-target="'#carouselExampleIndicators' + index"
@@ -205,14 +187,14 @@
             <p class="text-gray-600 mb-4">{{ project.description }}</p>
             <a :href="project.link" class="text-blue-600 font-medium hover:underline" target="_blank"
               rel="noopener noreferrer">
-              <div class="flex">
-                <p>Watch on YouTube</p>
+              <span class="flex">
+                <span>Watch on YouTube</span>
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
                   class="bi bi-youtube mx-2" viewBox="0 0 16 16">
                   <path
                     d="M8.051 1.999h.089c.822.003 4.987.033 6.11.335a2.01 2.01 0 0 1 1.415 1.42c.101.38.172.883.22 1.402l.01.104.022.26.008.104c.065.914.073 1.77.074 1.957v.075c-.001.194-.01 1.108-.082 2.06l-.008.105-.009.104c-.05.572-.124 1.14-.235 1.558a2.01 2.01 0 0 1-1.415 1.42c-1.16.312-5.569.334-6.18.335h-.142c-.309 0-1.587-.006-2.927-.052l-.17-.006-.087-.004-.171-.007-.171-.007c-1.11-.049-2.167-.128-2.654-.26a2.01 2.01 0 0 1-1.415-1.419c-.111-.417-.185-.986-.235-1.558L.09 9.82l-.008-.104A31 31 0 0 1 0 7.68v-.123c.002-.215.01-.958.064-1.778l.007-.103.003-.052.008-.104.022-.26.01-.104c.048-.519.119-1.023.22-1.402a2.01 2.01 0 0 1 1.415-1.42c.487-.13 1.544-.21 2.654-.26l.17-.007.172-.006.086-.003.171-.007A100 100 0 0 1 7.858 2zM6.4 5.209v4.818l4.157-2.408z" />
                 </svg>
-              </div>
+              </span>
             </a>
           </div>
         </div>
@@ -255,7 +237,7 @@
     <footer class="bg-blue-600 text-white py-8">
       <div class="container mx-auto text-center">
         <p id="FooterHeader">
-          2024 - Made with
+          {{ currentYear }} - Made with
           <span class="p-2 text-2xl text-red-500">&hearts;</span>
         </p>
       </div>
@@ -268,6 +250,7 @@
       el: "#app",
       data: {
         isMenuOpen: false, // For mobile menu toggle
+        currentYear: new Date().getFullYear(),
         portfolioData: {
           about: {
             title: "About",
