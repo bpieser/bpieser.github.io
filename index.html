@@ -75,13 +75,20 @@
 
         <!-- About Section -->
         <section id="about" class="section-padding bg-light">
-            <div class="container text-center">
-                <h2 class="display-7 fw-semibold text-primary mb-4">
+            <div class="container">
+                <h2 class="display-7 fw-semibold text-primary text-center mb-5">
                     {{ portfolioData.about.title }}
                 </h2>
-                <p class="text-muted fs-5 mx-auto about-text">
-                    {{ portfolioData.about.description }}
-                </p>
+                <div class="row g-5 justify-content-center">
+                    <div class="col-lg-5">
+                        <h3 class="fs-5 fw-semibold text-dark mb-3">{{ portfolioData.about.siteTitle }}</h3>
+                        <p class="text-muted">{{ portfolioData.about.siteDescription }}</p>
+                    </div>
+                    <div class="col-lg-5">
+                        <h3 class="fs-5 fw-semibold text-dark mb-3">{{ portfolioData.about.meTitle }}</h3>
+                        <p class="text-muted">{{ portfolioData.about.description }}</p>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -218,8 +225,11 @@
         portfolioData: {
           about: {
             title: "About",
+            siteTitle: "This website",
+            siteDescription: "This portfolio is a curated overview of the skills, experience and tools I bring to Windows desktop application development. Browse real-world project examples in the Showcase, explore the technical domains I specialise in, and get a transparent picture of the technologies.",
+            meTitle: "Me",
             description:
-              "With over 15 years of experience in Windows desktop application and UI development, I am passionate about creating intuitive, user-centered solutions. My expertise spans the .NET and C# technology stack, user interface testing, and software performance analysis.",
+              "With 15+ years in .NET and C# development, I specialise in WPF, MVVM architecture and the full software lifecycle — from UI design and unit testing to CI/CD pipelines and installer packaging. I care about clean code, measurable performance and software that feels as good as it works.",
           },
           projects: [
             {
@@ -319,6 +329,7 @@
               { icon: "bi bi-hdd-network-fill",    title: "REST Web API",                   description: "Consuming and building HTTP services with HttpClient, ASP.NET Core." },
               { icon: "bi bi-journal-text",        title: "Exception Handling & Logging",   description: "Implementing robust error handling strategies and structured logging." },
               { icon: "bi bi-arrow-repeat",        title: "Async & Threading",              description: "Writing responsive applications using async/await and thread-safe patterns." },
+              { icon: "bi bi-speedometer2",        title: "Benchmarks",                     description: "Measuring and optimising application performance." },
               { icon: "bi bi-gear-wide-connected", title: "Continuous Integration",         description: "Automating builds, tests and deployments with GitLab CI/CD pipelines and YAML configuration." },
               { icon: "bi bi-box-seam-fill",       title: "Installer · WiX Toolset",        description: "Creating professional installers with WiX Toolset for desktop application deployments." },
           ],
