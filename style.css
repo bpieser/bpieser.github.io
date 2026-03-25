@@ -93,7 +93,7 @@ h3 {
 }
 
 .custom-shape-divider-top .shape-fill {
-  fill: var(--bs-primary);
+  fill: url(#heroGradient);
 }
 
 .section-padding {

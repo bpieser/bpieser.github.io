@@ -37,10 +37,10 @@
 
                 <!-- Desktop Navbar Links -->
                 <div class="d-none d-md-flex gap-4">
-                    <a href="#about" class="nav-link-custom fw-medium">About</a>
                     <a href="#projects" class="nav-link-custom fw-medium">Showcase</a>
                     <a href="#domains" class="nav-link-custom fw-medium">Domains</a>
                     <a href="#skills" class="nav-link-custom fw-medium">Skills</a>
+                    <a href="#about" class="nav-link-custom fw-medium">About</a>
                 </div>
 
                 <!-- Hamburger Icon for Mobile -->
@@ -54,44 +54,32 @@
 
             <!-- Mobile Navbar Links -->
             <div v-if="isMenuOpen" class="d-md-none bg-white shadow mobile-menu">
-                <a href="#about" class="d-block text-dark text-decoration-none px-4 py-2 mobile-nav-link">About</a>
                 <a href="#projects" class="d-block text-dark text-decoration-none px-4 py-2 mobile-nav-link">Showcase</a>
                 <a href="#domains" class="d-block text-dark text-decoration-none px-4 py-2 mobile-nav-link">Domains</a>
                 <a href="#skills" class="d-block text-dark text-decoration-none px-4 py-2 mobile-nav-link">Skills</a>
+                <a href="#about" class="d-block text-dark text-decoration-none px-4 py-2 mobile-nav-link">About</a>
             </div>
         </nav>
 
         <!-- Hero Section (Header) -->
         <header class="bg-primary text-white text-center hero-section">
             <div class="container py-5">
-                <h2 class="display-6 fw-bold">Development &middot; Design &middot; DevOps</h2>
+                <h1 class="display-6 fw-bold">.NET Software Solutions</h1>
+                <p class="lead">{{ portfolioData.about.siteDescription }}</p>
             </div>
         </header>
         <div class="custom-shape-divider-top">
             <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <defs>
+                    <linearGradient id="heroGradient" x1="0" y1="0" x2="1200" y2="120" gradientUnits="userSpaceOnUse">
+                        <stop offset="0%" stop-color="#2196F3"/>
+                        <stop offset="100%" stop-color="#1976D2"/>
+                    </linearGradient>
+                </defs>
                 <path d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z"
                       class="shape-fill"></path>
             </svg>
         </div>
-
-        <!-- About Section -->
-        <section id="about" class="section-padding bg-light">
-            <div class="container">
-                <h2 class="display-7 fw-semibold text-primary text-center mb-5">
-                    {{ portfolioData.about.title }}
-                </h2>
-                <div class="row g-5 justify-content-center">
-                    <div class="col-lg-5">
-                        <h3 class="fs-5 fw-semibold text-dark mb-3">{{ portfolioData.about.siteTitle }}</h3>
-                        <p class="text-muted">{{ portfolioData.about.siteDescription }}</p>
-                    </div>
-                    <div class="col-lg-5">
-                        <h3 class="fs-5 fw-semibold text-dark mb-3">{{ portfolioData.about.meTitle }}</h3>
-                        <p class="text-muted">{{ portfolioData.about.description }}</p>
-                    </div>
-                </div>
-            </div>
-        </section>
 
         <!-- Projects Section -->
         <section id="projects" class="section-padding bg-white">
@@ -205,6 +193,19 @@
             </div>
         </section>
 
+        <!-- About Section -->
+        <section id="about" class="section-padding bg-light">
+            <div class="container">
+                <h2 class="display-7 fw-semibold text-primary text-center mb-5">
+                    {{ portfolioData.about.title }}
+                </h2>
+                <div class="row g-10 justify-content-center">
+                    <div class="col-lg-10">
+                        <p class="text-muted">{{ portfolioData.about.description }}</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
         <!-- Footer -->
         <footer class="bg-primary text-white py-4">
@@ -227,7 +228,7 @@
           about: {
             title: "About",
             siteTitle: "This website",
-            siteDescription: "This portfolio is a curated overview of the skills, experience and tools I bring to Windows desktop application development. Browse real-world project examples in the Showcase, explore the technical domains I specialise in, and get a transparent picture of the technologies.",
+                siteDescription: "15+ years of hands-on .NET and WPF development.",
             meTitle: "Me",
             description:
               "With 15+ years in .NET and C# development, I specialise in WPF, MVVM architecture and the full software lifecycle — from UI design and unit testing to CI/CD pipelines and installer packaging. I care about clean code, measurable performance and software that feels as good as it works.",
@@ -286,40 +287,39 @@
           ],
           skills: {
             frontend: [
-              { name: "WPF", rating: 5, description: "Rich desktop UI framework using XAML and data binding" },
-              { name: "WinForms", rating: 4, description: "Rapid Windows application development with drag-and-drop design" },
-              { name: "Infragistics", rating: 4, description: "Enterprise UI components for grids, charts and dashboards" },
-              { name: "Syncfusion", rating: 3, description: "Component suite for data visualization and complex UI" },
-              { name: "ReactiveUI", rating: 2, description: "Reactive MVVM framework built on top of Rx.NET" },
-              { name: "HTML/CSS", rating: 4, description: "Web markup and styling for modern, responsive layouts" },
+              { name: "WPF",            rating: 5, description: "Rich desktop UI framework using XAML and data binding" },
+              { name: "WinForms",       rating: 4, description: "Rapid Windows application development with drag-and-drop design" },
+              { name: "Infragistics",   rating: 4, description: "Enterprise UI components for grids, charts and dashboards" },
+              { name: "Syncfusion",     rating: 3, description: "Component suite for data visualization and complex UI" },
+              { name: "ReactiveUI",     rating: 2, description: "Reactive MVVM framework built on top of Rx.NET" },
+              { name: "HTML/CSS",       rating: 4, description: "Web markup and styling for modern, responsive layouts" },
             ],
             coding: [
-              { name: "C#", rating: 5, description: "Primary language for all .NET application development" },
-              { name: ".NET", rating: 4, description: "Cross-platform Microsoft framework for building applications" },
-              { name: "NUnit | xUnit", rating: 4, description: "Test-driven development with unit and integration tests" },
-              { name: "LINQ", rating: 4, description: "Declarative data querying integrated into the language" },
-              { name: "SQL", rating: 3, description: "Database design, querying and performance optimization" },
-              { name: "Async", rating: 4, description: "Non-blocking I/O and parallel task programming" },
-              { name: "MVVM | MVC", rating: 5, description: "Separation of concerns for testable, maintainable UIs" },
-              { name: "SOLID", rating: 4, description: "Clean architecture guided by object-oriented principles" },
-              { name: "Dependency Injection", rating: 3, description: "Decoupling components." },
+              { name: "C#",                     rating: 5, description: "Primary language for all .NET application development" },
+              { name: ".NET",                   rating: 4, description: "Cross-platform Microsoft framework for building applications" },
+              { name: "NUnit | xUnit",          rating: 4, description: "Test-driven development with unit and integration tests" },
+              { name: "LINQ",                   rating: 4, description: "Declarative data querying integrated into the language" },
+              { name: "SQL",                    rating: 3, description: "Database design, querying and performance optimization" },
+              { name: "Async",                  rating: 4, description: "Non-blocking I/O and parallel task programming" },
+              { name: "MVVM | MVC",             rating: 5, description: "Separation of concerns for testable, maintainable UIs" },
+              { name: "Dependency Injection",   rating: 3, description: "Decoupling components." },
             ],
             tools: [
-              { name: "Visual Studio", rating: 5, description: "IDE for .NET and C# development" },
-              { name: "ReSharper", rating: 5, description: "Code inspection, refactoring for VS" },
-              { name: "Git", rating: 4, description: "Branching, merging and distributed version control" },
-              { name: "GitLab", rating: 4, description: "CI/CD pipelines, issue tracking and code review" },
-              { name: "dotTrace", rating: 4, description: ".NET performance profiler" },
-              { name: "TestComplete", rating: 4, description: "Automated functional and regression UI testing" },
-              { name: "MongoDB Atlas", rating: 4, description: "NoSQL database for flexible schemas" },
-              { name: "Gimp", rating: 4, description: "Image editing for UI mockups and asset creation" },
-              { name: "Scrum", rating: 4, description: "Agile iterative delivery with sprints and retrospectives" },
+              { name: "Visual Studio",  rating: 5, description: "IDE for .NET and C# development" },
+              { name: "ReSharper",      rating: 5, description: "Code inspection, refactoring for VS" },
+              { name: "Git",            rating: 4, description: "Branching, merging and distributed version control" },
+              { name: "GitLab",         rating: 4, description: "CI/CD pipelines, issue tracking and code review" },
+              { name: "dotTrace",       rating: 4, description: ".NET performance profiler" },
+              { name: "TestComplete",   rating: 4, description: "Automated functional and regression UI testing" },
+              { name: "MongoDB Atlas",  rating: 4, description: "NoSQL database for flexible schemas" },
+              { name: "Gimp",           rating: 4, description: "Image editing for UI mockups and asset creation" },
+              { name: "Scrum",          rating: 4, description: "Agile iterative delivery with sprints and retrospectives" },
             ],
           },
           categoryMeta: {
-            frontend: { icon: "bi bi-display", label: "Frontend & UI", description: "Building rich desktop and web user interfaces" },
-            coding: { icon: "bi bi-code-slash", label: "Development", description: "Core languages, frameworks and design patterns" },
-              tools: { icon: "bi bi-wrench-adjustable", label: "Tools & Platforms", description: "Development, testing and productivity tooling" },
+            frontend:   { icon: "bi bi-display",            label: "Frontend & UI",     description: "Building rich desktop and web user interfaces" },
+            coding:     { icon: "bi bi-code-slash",         label: "Development",       description: "Core languages, frameworks and design patterns" },
+              tools:    { icon: "bi bi-wrench-adjustable",  label: "Tools & Platforms", description: "Development, testing and productivity tooling" },
           },
           domains: [
               { icon: "bi bi-diagram-3-fill",      title: "Application Logic",              description: "Structuring business rules and workflows into clean, maintainable domain and service layers." },
