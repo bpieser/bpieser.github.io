@@ -70,7 +70,7 @@ h3 {
 }
 
 .hero-section {
-  background: linear-gradient(135deg, #1976D2 0%, #2196F3 100%) !important;
+  background: linear-gradient(0deg, #1976D2 0%, #2196F3 100%) !important;
   padding-top: 7rem;
   padding-bottom: 2.5rem;
 }
@@ -93,7 +93,7 @@ h3 {
 }
 
 .custom-shape-divider-top .shape-fill {
-  fill: url(#heroGradient);
+  fill: #1976D2;
 }
 
 .section-padding {
